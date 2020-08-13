@@ -16,19 +16,19 @@ class MoodTableViewCell: UITableViewCell {
     }
     var bgView: UIView = {
         let view = UIView()
-        view.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        view.backgroundColor = .royalPink
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOpacity = 0.5
-        view.layer.shadowOffset = CGSize(width: 0, height: 1)
-        view.layer.shadowRadius = 2
-        view.layer.cornerRadius = 10
+            view.heightAnchor.constraint(equalToConstant: 100).isActive = true
+            view.backgroundColor = .royalPink
+            view.layer.shadowColor = UIColor.black.cgColor
+            view.layer.shadowOpacity = 0.5
+            view.layer.shadowOffset = CGSize(width: 0, height: 1)
+            view.layer.shadowRadius = 2
+            view.layer.cornerRadius = 10
         return view
     }()
     var moodName: UILabel = {
         let lbl = UILabel()
-        lbl.font = .rounded(ofSize: 36, weight: .regular)
-        lbl.textColor = .white
+            lbl.font = .rounded(ofSize: 36, weight: .regular)
+            lbl.textColor = .white
         return lbl
     }()
     
@@ -36,10 +36,10 @@ class MoodTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubview(bgView)
         bgView.translatesAutoresizingMaskIntoConstraints = false
-        bgView.topAnchor.constraint(equalTo: topAnchor,constant: 20).isActive = true
+        bgView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         bgView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         bgView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-        bgView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        bgView.bottomAnchor.constraint(equalTo: bottomAnchor,constant: -20).isActive = true
         
         addSubview(moodName)
         moodName.translatesAutoresizingMaskIntoConstraints = false

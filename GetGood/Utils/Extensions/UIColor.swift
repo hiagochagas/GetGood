@@ -13,4 +13,5 @@ extension UIColor{
     static let royalPink = UIColor(red: 191/255, green: 90/255, blue: 242/255, alpha: 1)
     static let actionOrange = UIColor(red: 238/255, green: 127/255, blue: 138/255, alpha: 1)
     static let actionRed = UIColor(red: 174/255, green: 64/255, blue: 89/255, alpha: 1)
+    static let darkerPurple = UIColor(red: 106/255, green: 0/255, blue: 159/255, alpha: 1)
 }

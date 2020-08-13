@@ -11,21 +11,19 @@ import UIKit
 class MoodView: UIView {
     var tableView = MoodTableView()
     
-    let moods = getMoods()
-    
     let receptionLbl: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Hey, John"
-        lbl.font = .rounded(ofSize: 36, weight: .regular)
-        lbl.textColor = .white
+            lbl.text = "Hey, John"
+            lbl.font = .rounded(ofSize: 36, weight: .regular)
+            lbl.textColor = .white
         return lbl
     }()
     
     let descriptionReceptionLbl: UILabel = {
         let lbl = UILabel()
-        lbl.text = "How are you feeling today?"
-        lbl.font = .rounded(ofSize: 24, weight: .thin)
-        lbl.textColor = .white
+            lbl.text = "How are you feeling today?"
+            lbl.font = .rounded(ofSize: 24, weight: .thin)
+            lbl.textColor = .white
         return lbl
     }()
     
@@ -42,13 +40,10 @@ class MoodView: UIView {
 
         addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: descriptionReceptionLbl.bottomAnchor).isActive = true
+        tableView.topAnchor.constraint(equalTo: descriptionReceptionLbl.bottomAnchor,constant: 20).isActive = true
         tableView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 30).isActive = true
         tableView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -30).isActive = true
         tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
-        tableView.delegate = self
-        tableView.dataSource = self
-
         
     }
     
@@ -72,15 +67,4 @@ class MoodView: UIView {
     */
 
 }
-extension MoodView: UITableViewDataSource, UITableViewDelegate{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return moods.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "moodCell", for: indexPath) as! MoodTableViewCell
-        cell.mood = moods[indexPath.row]
-        return cell
-    }
-   
-}
+
