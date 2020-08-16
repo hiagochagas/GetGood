@@ -15,6 +15,7 @@ class TabBarVC: UITabBarController {
         setupTabBar()
         self.tabBar.tintColor = #colorLiteral(red: 0.7490196078, green: 0.3529411765, blue: 0.9490196078, alpha: 1)
         self.tabBar.barTintColor = .black
+        
     }
     func setupTabBar(){
         let moodViewController = setupVc(rootViewController: MoodVC(), image: UIImage(systemName: "heart.fill")!, title: "Mood")

@@ -25,6 +25,8 @@
 		6E2A555A24E433BB001B0A6A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2A555924E433BB001B0A6A /* UIColor.swift */; };
 		6E2A555C24E56511001B0A6A /* MoodDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2A555B24E56511001B0A6A /* MoodDetailVC.swift */; };
 		6E2A555E24E5652B001B0A6A /* MoodDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2A555D24E5652B001B0A6A /* MoodDetailView.swift */; };
+		6E2A556124E581AA001B0A6A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2A556024E581AA001B0A6A /* HomeView.swift */; };
+		6E2A556324E6B770001B0A6A /* QuotesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2A556224E6B770001B0A6A /* QuotesAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,8 @@
 		6E2A555924E433BB001B0A6A /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		6E2A555B24E56511001B0A6A /* MoodDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodDetailVC.swift; sourceTree = "<group>"; };
 		6E2A555D24E5652B001B0A6A /* MoodDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodDetailView.swift; sourceTree = "<group>"; };
+		6E2A556024E581AA001B0A6A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		6E2A556224E6B770001B0A6A /* QuotesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				6E2A555224E42F3D001B0A6A /* Moods.swift */,
+				6E2A556224E6B770001B0A6A /* QuotesAPI.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -159,6 +164,7 @@
 		6E2A554124E4117B001B0A6A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6E2A555F24E58189001B0A6A /* HomePage */,
 				6E2A555424E430ED001B0A6A /* MoodPage */,
 			);
 			path = View;
@@ -212,6 +218,14 @@
 				6E2A555D24E5652B001B0A6A /* MoodDetailView.swift */,
 			);
 			path = MoodPage;
+			sourceTree = "<group>";
+		};
+		6E2A555F24E58189001B0A6A /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				6E2A556024E581AA001B0A6A /* HomeView.swift */,
+			);
+			path = HomePage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -368,7 +382,9 @@
 				6E2A554B24E41485001B0A6A /* OutburstVC.swift in Sources */,
 				6E2A555C24E56511001B0A6A /* MoodDetailVC.swift in Sources */,
 				6E2A555E24E5652B001B0A6A /* MoodDetailView.swift in Sources */,
+				6E2A556124E581AA001B0A6A /* HomeView.swift in Sources */,
 				6E2A555A24E433BB001B0A6A /* UIColor.swift in Sources */,
+				6E2A556324E6B770001B0A6A /* QuotesAPI.swift in Sources */,
 				6E2A554924E41461001B0A6A /* MoodVC.swift in Sources */,
 				6E2A555624E43144001B0A6A /* MoodTableView.swift in Sources */,
 				6E2A551024E40B33001B0A6A /* AppDelegate.swift in Sources */,
