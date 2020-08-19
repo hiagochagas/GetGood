@@ -7,16 +7,18 @@
 //
 
 import UIKit
+//global variable?
+var userName: String = UserDefaults.standard.value(forKey: "userName") as? String ?? "No userName has been found/defined"
 
 class TabBarVC: UITabBarController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTabBar()
         self.tabBar.tintColor = #colorLiteral(red: 0.7490196078, green: 0.3529411765, blue: 0.9490196078, alpha: 1)
         self.tabBar.barTintColor = .black
-        
     }
+    
     func setupTabBar(){
         let moodViewController = setupVc(rootViewController: MoodVC(), image: UIImage(systemName: "heart.fill")!, title: "Mood")
         let homeViewController = setupVc(rootViewController: HomepageVC(), image: UIImage(systemName: "house.fill")!, title: "Home")
@@ -31,4 +33,6 @@ class TabBarVC: UITabBarController {
         viewController.title = title
         return viewController
     }
+    
+    
 }

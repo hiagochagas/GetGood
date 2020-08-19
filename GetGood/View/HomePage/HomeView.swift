@@ -12,7 +12,7 @@ class HomeView: UIView {
     
     let receptionLbl: UILabel = {
         let lbl = UILabel()
-            lbl.text = "Hi, John 👋"
+            lbl.text = "Hi 👋"
             lbl.font = .rounded(ofSize: 36, weight: .regular)
             lbl.textColor = .white
         return lbl
@@ -33,7 +33,7 @@ class HomeView: UIView {
     }()
     let citationLabel: UILabel = {
         let lbl = UILabel()
-            lbl.text = "\"Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet\""
+            lbl.text = "Loading from API"
             lbl.font = .rounded(ofSize: 24, weight: .regular)
             lbl.textColor = .white
             lbl.numberOfLines = 0
@@ -42,7 +42,7 @@ class HomeView: UIView {
     
     let authorLabel: UILabel = {
         let lbl = UILabel()
-            lbl.text = "- John Appleseed"
+            lbl.text = "Loading..."
             lbl.font = .rounded(ofSize: 24, weight: .regular)
             lbl.textColor = .white
         return lbl
@@ -50,7 +50,7 @@ class HomeView: UIView {
     let stackView: UIStackView = {
         let stack = UIStackView()
         stack.alignment = .center
-        stack.distribution = .equalCentering
+        stack.distribution = .equalSpacing
         stack.axis = .vertical
         stack.spacing = 30
         return stack
@@ -61,7 +61,7 @@ class HomeView: UIView {
         addSubview(receptionLbl)
         receptionLbl.translatesAutoresizingMaskIntoConstraints = false
         receptionLbl.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 30).isActive = true
-        receptionLbl.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: safeAreaInsets.top + 36).isActive = true
+        receptionLbl.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 36).isActive = true
         
         addSubview(descriptionReceptionLbl)
         descriptionReceptionLbl.translatesAutoresizingMaskIntoConstraints = false
@@ -77,10 +77,8 @@ class HomeView: UIView {
         stackView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         //stackView.addArrangedSubview(UIView())
         stackView.addArrangedSubview(bookLabel)
-        
         stackView.addArrangedSubview(citationLabel)
         stackView.addArrangedSubview(authorLabel)
-        //stackView.addArrangedSubview(UIView())
     }
     
     required init?(coder: NSCoder) {

@@ -13,7 +13,7 @@ class MoodView: UIView {
     
     let receptionLbl: UILabel = {
         let lbl = UILabel()
-            lbl.text = "Hey, John"
+        lbl.text = "Hey, \(UserDefaults.standard.value(forKey: "userName") as! String)"
             lbl.font = .rounded(ofSize: 36, weight: .regular)
             lbl.textColor = .white
         return lbl
@@ -45,8 +45,7 @@ class MoodView: UIView {
         tableView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -30).isActive = true
         tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
         
-    }
-    
+    }    
 
     override init(frame: CGRect) {
         super.init(frame: frame)

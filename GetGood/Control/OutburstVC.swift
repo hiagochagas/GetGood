@@ -9,12 +9,20 @@
 import UIKit
 
 class OutburstVC: UIViewController {
-
+    let outburstView = OutburstView()
+    var user: String {
+        return UserDefaults.standard.string(forKey: "userName") ?? "Swift"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view = outburstView
         // Do any additional setup after loading the view.
     }
+    override func viewWillAppear(_ animated: Bool) {
+        outburstView.receptionLbl.text = "Hey, \(user)"
+    }
+   
     
 
     /*

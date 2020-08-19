@@ -5,19 +5,50 @@
 //  Created by Hiago Chagas on 12/08/20.
 //  Copyright © 2020 Hiago Chagas. All rights reserved.
 //
-
+import Foundation
 import UIKit
 
 class MoodVC: UIViewController {
     let moods = getMoods()
     let mood = MoodView()
     
+    var user = UserDefaults.standard.value(forKey: "userName") as! String {
+        didSet{
+            DispatchQueue.main.async {
+                self.mood.receptionLbl.text = "Hey, \(self.user)"
+            }
+        }
+    }
+    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         mood.tableView.delegate = self
         mood.tableView.dataSource = self
+        getNameAlert()
         view = mood
-        
+    }
+    
+    func getNameAlert(){
+        var isFirstLaunch: Bool = (UserDefaults.standard.value(forKey: "FirstLaunch") as? Bool) ?? true
+        isFirstLaunch = true
+        if(isFirstLaunch){
+            UserDefaults.standard.set(false, forKey: "FirstLaunch")
+            //pop up alert to get the name of the user
+            let alert = UIAlertController(title: "Welcome!", message: "Can you say your name to me?", preferredStyle: .alert)
+            alert.addTextField(configurationHandler: {
+                (textField) -> Void in
+            })
+            alert.addAction(UIAlertAction(title: "Save", style: .default, handler: {
+                (action) -> Void in
+                //does stuff on click on save
+                let userNameFromTextField = alert.textFields![0] as UITextField
+                self.user = userNameFromTextField.text ?? "No name has been atributed"
+                UserDefaults.standard.set(userNameFromTextField.text, forKey: "userName")
+            }))
+            print("present alert")
+            present(alert, animated: true, completion: nil)
+        }
     }
     
 
