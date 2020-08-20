@@ -29,7 +29,6 @@ class SavedOutburstTableViewCell: UITableViewCell {
         textField.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         textField.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         textField.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -20).isActive = true
-        textField.text = "This is an test"
         self.backgroundColor = .clear
         self.selectionStyle = .none
     }

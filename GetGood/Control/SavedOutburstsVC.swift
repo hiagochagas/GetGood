@@ -11,7 +11,9 @@ import UIKit
 class SavedOutburstsVC: UIViewController {
     let savedView = SavedOutbursts()
     private let outburstRepository: OutburstRepository
-    
+    var outbursts: [Outburst] {
+        return outburstRepository.readAllItems()
+    }
     init(repository: OutburstRepository){
         self.outburstRepository = repository
         super.init(nibName: nil, bundle: nil)
@@ -35,6 +37,7 @@ class SavedOutburstsVC: UIViewController {
         //sets the height of row because it wasn't appearing
         savedView.tableView.rowHeight = 200
         self.view = savedView
+        
     }
     
     @objc func dismissModal(){
@@ -44,7 +47,7 @@ class SavedOutburstsVC: UIViewController {
 
 extension SavedOutburstsVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return outburstRepository.readAllItems().count
+        return outbursts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -52,5 +55,10 @@ extension SavedOutburstsVC: UITableViewDelegate, UITableViewDataSource{
             cell?.textField.text = outburstRepository.readAllItems()[indexPath.row].text
         return cell ?? SavedOutburstTableViewCell()
     }
-    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete{
+            outburstRepository.delete(id: outbursts[indexPath.row].id)
+            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+        }
+    }
 }

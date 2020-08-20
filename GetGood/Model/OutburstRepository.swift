@@ -24,29 +24,41 @@ class OutburstRepository: Codable{
     func createNewItem() -> Outburst{
         let newItem = Outburst()
         items.append(newItem)
-        //persistance
-       
-        
-        
+        if let data = try? JSONEncoder().encode(newItem){
+            FileHelper().createFile(with: data, name: newItem.id.uuidString)
+        }
         return newItem
     }
-    
     func readAllItems() -> [Outburst]{
         //read from persistance file
+        let fileNames: [String] = FileHelper().contentsForDirectory(atPath: "")
+        self.items = fileNames.compactMap {(fileName) -> Outburst? in
+            if let data = FileHelper().retrieveFile(at: fileName){
+                //decode from Data to Outburst type
+                let item = try? JSONDecoder().decode(Outburst.self, from: data)
+                return item
+            }
+            return nil
+        }
         return items
     }
     
     func readItem(id: UUID) -> Outburst?{
-        return readAllItems().first(where: { $0.id == id })
+        if let data = FileHelper().retrieveFile(at: id.uuidString) {
+            let item = try? JSONDecoder().decode(Outburst.self, from: data)
+            return item
+        }
+        return nil
     }
     
     func update(item: Outburst){
-        items = items.map { $0.id == item.id ? item : $0}
-        //overwrite persistant file
+        if let data = try? JSONEncoder().encode(item){
+            FileHelper().updateFile(at: item.id.uuidString, data: data)
+        }
     }
     
     func delete(id: UUID){
-        items.removeAll(where: {$0.id == id})
+        FileHelper().removeFile(at: id.uuidString)
     }
     
     
