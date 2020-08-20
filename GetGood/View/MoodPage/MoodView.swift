@@ -13,7 +13,7 @@ class MoodView: UIView {
     
     let receptionLbl: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Hey, \(UserDefaults.standard.value(forKey: "userName") as! String)"
+        lbl.text = "Hey, \(UserDefaults.standard.value(forKey: "userName") as? String ?? "John")"
             lbl.font = .rounded(ofSize: 36, weight: .regular)
             lbl.textColor = .white
         return lbl
@@ -31,7 +31,7 @@ class MoodView: UIView {
         addSubview(receptionLbl)
         receptionLbl.translatesAutoresizingMaskIntoConstraints = false
         receptionLbl.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 30).isActive = true
-        receptionLbl.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: safeAreaInsets.top + 36).isActive = true
+        receptionLbl.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 36).isActive = true
         
         addSubview(descriptionReceptionLbl)
         descriptionReceptionLbl.translatesAutoresizingMaskIntoConstraints = false
@@ -55,15 +55,6 @@ class MoodView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 

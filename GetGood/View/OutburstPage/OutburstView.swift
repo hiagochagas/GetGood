@@ -12,7 +12,7 @@ class OutburstView: UIView {
     
     let receptionLbl: UILabel = {
       let lbl = UILabel()
-          lbl.text = "Hey, \(UserDefaults.standard.value(forKey: "userName") as! String)"
+          lbl.text = "Hey, \(UserDefaults.standard.value(forKey: "userName") as? String ?? "John")"
           lbl.font = .rounded(ofSize: 36, weight: .regular)
           lbl.textColor = .white
       return lbl
@@ -26,12 +26,12 @@ class OutburstView: UIView {
       return lbl
     }()
 
-    let savedOutburstBtn: UILabel = {
-        let btn = UILabel()
+    let savedOutburstBtn: UIButton = {
+        let btn = UIButton()
             btn.backgroundColor = .clear
-            btn.textColor = .actionOrange
-            btn.font = .rounded(ofSize: 12, weight: .regular)
-            btn.text = "Saved Outbursts"
+            btn.setTitleColor(.actionOrange, for: .normal)
+            btn.titleLabel?.font = .rounded(ofSize: 12, weight: .bold)
+            btn.setTitle("Saved Outbursts", for: .normal)
         return btn
     }()
 
@@ -83,6 +83,7 @@ class OutburstView: UIView {
         textField.topAnchor.constraint(equalTo: descriptionReceptionLbl.bottomAnchor, constant: 20).isActive = true
         textField.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -30).isActive = true
         textField.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -50).isActive = true
+        textField.delegate = self
         
         addSubview(saveButton)
         saveButton.translatesAutoresizingMaskIntoConstraints = false
@@ -109,4 +110,18 @@ class OutburstView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+}
+extension OutburstView: UITextViewDelegate{
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.textColor = .white
+        if textView.text == "Placeholder"{
+            textView.text.removeAll()
+        }
+    }
+    func textViewDidEndEditing(_ textView: UITextView) {
+        textView.textColor = .lightGray
+        if textView.text.isEmpty{
+            textView.text = "Placeholder"
+        }
+    }
 }

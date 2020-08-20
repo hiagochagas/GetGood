@@ -51,7 +51,7 @@ class MoodDetailView: UIView {
         addSubview(moodName)
         moodName.translatesAutoresizingMaskIntoConstraints = false
         moodName.leftAnchor.constraint(equalTo: self.leftAnchor,constant: 30).isActive = true
-        moodName.topAnchor.constraint(equalTo: self.topAnchor, constant: 50).isActive = true
+        moodName.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
         
         addSubview(moodDescription)
         moodDescription.translatesAutoresizingMaskIntoConstraints = false

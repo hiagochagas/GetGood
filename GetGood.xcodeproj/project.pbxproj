@@ -29,6 +29,12 @@
 		6E2A556324E6B770001B0A6A /* QuotesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2A556224E6B770001B0A6A /* QuotesAPI.swift */; };
 		6E2A556624E9724F001B0A6A /* OutburstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2A556524E9724F001B0A6A /* OutburstView.swift */; };
 		6E2A557124EAC882001B0A6A /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2A557024EAC882001B0A6A /* UIView.swift */; };
+		6EF0CC9F24ED4E1D003731DC /* SavedOutburstsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF0CC9E24ED4E1D003731DC /* SavedOutburstsVC.swift */; };
+		6EF0CCA124ED5210003731DC /* SavedOutbursts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF0CCA024ED5210003731DC /* SavedOutbursts.swift */; };
+		6EF0CCA324ED5D61003731DC /* SavedOutburstsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF0CCA224ED5D61003731DC /* SavedOutburstsTableView.swift */; };
+		6EF0CCA524ED5EBE003731DC /* SavedOutburstTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF0CCA424ED5EBE003731DC /* SavedOutburstTableViewCell.swift */; };
+		6EF0CCA724ED65EC003731DC /* OutburstRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF0CCA624ED65EC003731DC /* OutburstRepository.swift */; };
+		6EF0CCAA24EEB829003731DC /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF0CCA924EEB829003731DC /* FileHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +83,12 @@
 		6E2A556224E6B770001B0A6A /* QuotesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesAPI.swift; sourceTree = "<group>"; };
 		6E2A556524E9724F001B0A6A /* OutburstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutburstView.swift; sourceTree = "<group>"; };
 		6E2A557024EAC882001B0A6A /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		6EF0CC9E24ED4E1D003731DC /* SavedOutburstsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedOutburstsVC.swift; sourceTree = "<group>"; };
+		6EF0CCA024ED5210003731DC /* SavedOutbursts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedOutbursts.swift; sourceTree = "<group>"; };
+		6EF0CCA224ED5D61003731DC /* SavedOutburstsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedOutburstsTableView.swift; sourceTree = "<group>"; };
+		6EF0CCA424ED5EBE003731DC /* SavedOutburstTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedOutburstTableViewCell.swift; sourceTree = "<group>"; };
+		6EF0CCA624ED65EC003731DC /* OutburstRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutburstRepository.swift; sourceTree = "<group>"; };
+		6EF0CCA924EEB829003731DC /* FileHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +139,7 @@
 		6E2A550E24E40B33001B0A6A /* GetGood */ = {
 			isa = PBXGroup;
 			children = (
+				6EF0CCA824EEB71D003731DC /* Helpers */,
 				6E2A554E24E416C3001B0A6A /* Utils */,
 				6E2A551824E40B35001B0A6A /* Assets.xcassets */,
 				6E2A551D24E40B35001B0A6A /* Info.plist */,
@@ -161,6 +174,7 @@
 			children = (
 				6E2A555224E42F3D001B0A6A /* Moods.swift */,
 				6E2A556224E6B770001B0A6A /* QuotesAPI.swift */,
+				6EF0CCA624ED65EC003731DC /* OutburstRepository.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -183,6 +197,7 @@
 				6E2A554824E41461001B0A6A /* MoodVC.swift */,
 				6E2A555B24E56511001B0A6A /* MoodDetailVC.swift */,
 				6E2A554A24E41485001B0A6A /* OutburstVC.swift */,
+				6EF0CC9E24ED4E1D003731DC /* SavedOutburstsVC.swift */,
 			);
 			path = Control;
 			sourceTree = "<group>";
@@ -238,8 +253,19 @@
 			isa = PBXGroup;
 			children = (
 				6E2A556524E9724F001B0A6A /* OutburstView.swift */,
+				6EF0CCA024ED5210003731DC /* SavedOutbursts.swift */,
+				6EF0CCA224ED5D61003731DC /* SavedOutburstsTableView.swift */,
+				6EF0CCA424ED5EBE003731DC /* SavedOutburstTableViewCell.swift */,
 			);
 			path = OutburstPage;
+			sourceTree = "<group>";
+		};
+		6EF0CCA824EEB71D003731DC /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6EF0CCA924EEB829003731DC /* FileHelper.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -394,7 +420,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E2A554B24E41485001B0A6A /* OutburstVC.swift in Sources */,
+				6EF0CCA724ED65EC003731DC /* OutburstRepository.swift in Sources */,
 				6E2A555C24E56511001B0A6A /* MoodDetailVC.swift in Sources */,
+				6EF0CCA324ED5D61003731DC /* SavedOutburstsTableView.swift in Sources */,
 				6E2A555E24E5652B001B0A6A /* MoodDetailView.swift in Sources */,
 				6E2A556624E9724F001B0A6A /* OutburstView.swift in Sources */,
 				6E2A556124E581AA001B0A6A /* HomeView.swift in Sources */,
@@ -405,9 +433,13 @@
 				6E2A551024E40B33001B0A6A /* AppDelegate.swift in Sources */,
 				6E2A554524E411E2001B0A6A /* TabBarVC.swift in Sources */,
 				6E2A555124E42062001B0A6A /* UIFont.swift in Sources */,
+				6EF0CC9F24ED4E1D003731DC /* SavedOutburstsVC.swift in Sources */,
+				6EF0CCAA24EEB829003731DC /* FileHelper.swift in Sources */,
+				6EF0CCA124ED5210003731DC /* SavedOutbursts.swift in Sources */,
 				6E2A554724E4142F001B0A6A /* HomepageVC.swift in Sources */,
 				6E2A555324E42F3D001B0A6A /* Moods.swift in Sources */,
 				6E2A554D24E4157D001B0A6A /* MoodView.swift in Sources */,
+				6EF0CCA524ED5EBE003731DC /* SavedOutburstTableViewCell.swift in Sources */,
 				6E2A551224E40B33001B0A6A /* SceneDelegate.swift in Sources */,
 				6E2A557124EAC882001B0A6A /* UIView.swift in Sources */,
 				6E2A555824E4328B001B0A6A /* MoodTableViewCell.swift in Sources */,
@@ -576,6 +608,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BSANZ76H3Y;
 				INFOPLIST_FILE = GetGood/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -593,6 +626,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BSANZ76H3Y;
 				INFOPLIST_FILE = GetGood/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -12,7 +12,7 @@ class MoodVC: UIViewController {
     let moods = getMoods()
     let mood = MoodView()
     
-    var user = UserDefaults.standard.value(forKey: "userName") as! String {
+    var user = UserDefaults.standard.value(forKey: "userName") as? String ?? "John"{
         didSet{
             DispatchQueue.main.async {
                 self.mood.receptionLbl.text = "Hey, \(self.user)"
@@ -30,8 +30,8 @@ class MoodVC: UIViewController {
     }
     
     func getNameAlert(){
-        var isFirstLaunch: Bool = (UserDefaults.standard.value(forKey: "FirstLaunch") as? Bool) ?? true
-        isFirstLaunch = true
+        let isFirstLaunch: Bool = (UserDefaults.standard.value(forKey: "FirstLaunch") as? Bool) ?? true
+        //isFirstLaunch = true
         if(isFirstLaunch){
             UserDefaults.standard.set(false, forKey: "FirstLaunch")
             //pop up alert to get the name of the user
@@ -60,16 +60,16 @@ extension MoodVC: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "moodCell", for: indexPath) as! MoodTableViewCell
-        cell.mood = moods[indexPath.row]
+            cell.mood = moods[indexPath.row]
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //present with a navigation controller
         let myVC = MoodDetailVC()
-        let navController = UINavigationController(rootViewController: myVC)
             myVC.moodView.moodName.text = moods[indexPath.row].moodName
             myVC.moodView.moodDescription.text = moods[indexPath.row].moodDescription
             myVC.moodView.whatToDo.text = moods[indexPath.row].waysToFeelBetter
+        let navController = UINavigationController(rootViewController: myVC)
         self.navigationController?.present(navController, animated: true, completion: nil)
     }
     
