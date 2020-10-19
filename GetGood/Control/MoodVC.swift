@@ -46,7 +46,6 @@ class MoodVC: UIViewController {
                 self.user = userNameFromTextField.text ?? "No name has been atributed"
                 UserDefaults.standard.set(userNameFromTextField.text, forKey: "userName")
             }))
-            print("present alert")
             present(alert, animated: true, completion: nil)
         }
     }

@@ -15,9 +15,9 @@ class QuoteRequest{
     var quoteResult: [Quote] = []
     let apiURL = "https://type.fit/api/quotes"
     
-    func fetchQuotes(completion: @escaping ([Quote]?, Error?) -> ()) {
+    func fetchQuotes(session: URLSession = URLSession.shared, completion: @escaping ([Quote]?, Error?) -> ()) {
         guard let url = URL(string: apiURL) else {fatalError()}
-        let task = URLSession.shared.dataTask(with: url){ data, response, error in
+        let task = session.dataTask(with: url){ data, response, error in
             if error != nil{
                 completion(nil, error)
                 return

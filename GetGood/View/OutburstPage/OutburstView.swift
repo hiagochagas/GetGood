@@ -38,7 +38,7 @@ class OutburstView: UIView {
     let textField: UITextView = {
         let txt = UITextView()
             txt.backgroundColor = .royalPink
-            txt.textColor = .white
+            txt.textColor = .lightGray
             txt.font = .rounded(ofSize: 20, weight: .regular)
             txt.text = "Placeholder"
         return txt
@@ -84,7 +84,7 @@ class OutburstView: UIView {
         textField.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -30).isActive = true
         textField.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -50).isActive = true
         textField.delegate = self
-        
+                
         addSubview(saveButton)
         saveButton.translatesAutoresizingMaskIntoConstraints = false
         saveButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
@@ -119,8 +119,8 @@ extension OutburstView: UITextViewDelegate{
         }
     }
     func textViewDidEndEditing(_ textView: UITextView) {
-        textView.textColor = .lightGray
         if textView.text.isEmpty{
+            textView.textColor = .lightGray
             textView.text = "Placeholder"
         }
     }

@@ -9,12 +9,11 @@
 import UIKit
 
 class OutburstVC: UIViewController {
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let outburstView = OutburstView()
-    private var outburstRepository = OutburstRepository()
     var user: String {
         return UserDefaults.standard.string(forKey: "userName") ?? "Swift"
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         let savedOutburstsTap = UITapGestureRecognizer(target: self, action: #selector(visualizeSavedOutbursts))
@@ -24,6 +23,10 @@ class OutburstVC: UIViewController {
         let burnOutburstTap = UITapGestureRecognizer(target: self, action: #selector(burnOutburst))
         outburstView.burnButton.addGestureRecognizer(burnOutburstTap)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+
+        
         view = outburstView
         // Do any additional setup after loading the view.
     }
@@ -32,10 +35,16 @@ class OutburstVC: UIViewController {
     }
     
     @objc func saveOutburst(){
-        let newOutburst = outburstRepository.createNewItem()
-            newOutburst.text = self.outburstView.textField.text
-        outburstRepository.update(item: newOutburst)
-        self.outburstView.textField.text = "Placeholder"
+        let resultText = self.outburstView.textField.text
+        let newOutburst = Outburst(context: self.context)
+            newOutburst.id = UUID()
+            newOutburst.text = resultText
+            newOutburst.date = Date()
+        do{
+            try self.context.save()
+        } catch {
+            print("Error \(error) when saving the data")
+        }
         showOutbursts()
     }
     
@@ -49,21 +58,34 @@ class OutburstVC: UIViewController {
     }
     
     func showOutbursts(){
-        let myVC = SavedOutburstsVC(repository: outburstRepository)
+        let myVC = SavedOutburstsVC()
         let navController = UINavigationController(rootViewController: myVC)
         self.navigationController?.present(navController, animated: true, completion: nil)
     }
-   
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
-    */
-
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.saveOutburst()
+        return true
+    }
+    @objc func keyboardWillShow(notification: NSNotification){
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue{
+            if let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double{
+                UIView.animate(withDuration: duration) {
+                    self.view.frame = CGRect(x: UIScreen.main.bounds.origin.x, y: UIScreen.main.bounds.origin.y, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - keyboardSize.height)
+                }
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+    @objc func keyboardHide(notification: NSNotification){
+            if let duracao = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double{
+                UIView.animate(withDuration: duracao) {
+                    self.view.frame = UIScreen.main.bounds
+                     self.view.layoutIfNeeded()
+                }
+        }
+    }
 }
